@@ -42,7 +42,7 @@ class Task
 
             return array('data' => 'Task successfully deleted');
         } catch (\Exception $e) {
-            return array('error' => 'Something went wrong');
+            return array('error' => $e->getMessage());
         }
     }
 
@@ -54,7 +54,7 @@ class Task
 
             return array('data' => 'Task successfully deleted');
         } catch (\Exception $e) {
-            return array('error' => 'Something went wrong');
+            return array('error' => $e->getMessage());
         }
     }
 
@@ -85,7 +85,7 @@ class Task
 
             return array('data' => 'Task Successfully added');
         } catch (\Exception $e) {
-            return array('error' => 'Cannot add task', "status" => false);
+            return array('error' => $e->getMessage());
         }
 
     }
@@ -120,7 +120,7 @@ class Task
 
             return array('data' => 'Task Successfully added');
         } catch (\Exception $e) {
-            return array('error' => 'Cannot add task');
+            return array('error' => $e->getMessage());
         }
     }
 
@@ -147,7 +147,7 @@ class Task
             R::store($task);
             return array('data' => 'Task Successfully updated');
         } catch (\Exception $e) {
-            return array('error' => 'Cannot update task');
+            return array('error' => $e->getMessage());
         }
 
     }
@@ -167,7 +167,7 @@ class Task
             R::store($task);
             return array('data' => 'Task Successfully updated');
         } catch (\Exception $e) {
-            return array('error' => 'Cannot update task');
+            return array('error' => $e->getMessage());
         }
 
     }
@@ -186,5 +186,14 @@ class Task
         }
 
         return $allDone;
+    }
+
+    public function allSubtasksDone($id)
+    {
+        if ($this->checkSubTasksStatus($id)) {
+            $data['id'] = $id;
+            $data['status'] = 1;
+            $this->updateTask($data);
+        }
     }
 }

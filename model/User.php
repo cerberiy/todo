@@ -6,13 +6,6 @@ use RedBeanPHP\R;
 
 class User
 {
-    private $bCrypt;
-
-    public function __construct()
-    {
-
-    }
-
     public function userAuthOrRegister()
     {
         $email = $_POST['email'];
@@ -64,7 +57,7 @@ class User
         }
     }
 
-    private function userRegister($email, $password)
+    public function userRegister($email, $password)
     {
         try {
             $newUser = R::dispense('user');

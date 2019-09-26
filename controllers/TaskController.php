@@ -50,7 +50,7 @@ class TaskController
     {
         $postData = $this->helper->getPostData();
 
-        $this->helper->allSubtasksDone($postData['parent']);
+        $this->taskModel->allSubtasksDone($postData['parent']);
 
         return json_encode($this->taskModel->addSub($postData));
     }
@@ -64,7 +64,7 @@ class TaskController
 
     public function actionUpdatesub()
     {
-        $postData = $this->helper->getPostData();
+        $postData = $this->taskModel->getPostData();
 
         $result = $this->taskModel->updateSubTask($postData);
 
