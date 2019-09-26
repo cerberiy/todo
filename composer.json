@@ -1,0 +1,26 @@
+{
+  "name": "averemiienko/todo",
+  "description": "TODO list",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Anatolii Veremiienko",
+      "email": "anatolii.veremiienko@gmail.com"
+    }
+  ],
+  "autoload": {
+    "classmap": [
+      "components/Router.php",
+      "components/Db.php",
+      "model/User.php",
+      "controllers/UserController.php",
+      "model/Task.php",
+      "controllers/TaskController.php",
+      "components/Helper.php"
+    ]
+  },
+  "require": {
+    "gabordemooij/redbean": "*",
+    "phpunit/phpunit": "*"
+  }
+}
