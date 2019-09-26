@@ -23,6 +23,8 @@ class Router
 	{
 		$uri = $this->getURI();
 
+        error_log("Failed to connect to database!", 0);
+
 		if (substr($uri, -1) == "?") {
             $uri = substr_replace($uri ,"", -1);
         }
